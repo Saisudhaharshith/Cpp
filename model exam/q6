@@ -1,0 +1,75 @@
+#include <iostream>
+#include <string>
+
+class Vehicle {
+protected:
+    std::string make;
+    std::string model;
+    int year;
+
+public:
+   
+    Vehicle(const std::string& make, const std::string& model, int year)
+        : make(make), model(model), year(year) {}
+
+    std::string getMake() const { return make; }
+    std::string getModel() const { return model; }
+    int getYear() const { return year; }
+
+    void setMake(const std::string& newMake) { make = newMake; }
+    void setModel(const std::string& newModel) { model = newModel; }
+    void setYear(int newYear) { year = newYear; }
+};
+
+class Car : public Vehicle {
+private:
+    int seatingCapacity;
+    std::string fuelType;
+
+public:
+   
+    Car(const std::string& make, const std::string& model, int year, int capacity, const std::string& fuel)
+        : Vehicle(make, model, year), seatingCapacity(capacity), fuelType(fuel) {}
+
+ 
+    int getSeatingCapacity() const { return seatingCapacity; }
+    std::string getFuelType() const { return fuelType; }
+
+    void setSeatingCapacity(int capacity) { seatingCapacity = capacity; }
+    void setFuelType(const std::string& fuel) { fuelType = fuel; }
+};
+
+class Truck : public Vehicle {
+private:
+    double payloadCapacity;
+    double towingCapacity;
+
+public:
+  
+    Truck(const std::string& make, const std::string& model, int year, double payload, double towing)
+        : Vehicle(make, model, year), payloadCapacity(payload), towingCapacity(towing) {}
+
+ 
+    double getPayloadCapacity() const { return payloadCapacity; }
+    double getTowingCapacity() const { return towingCapacity; }
+
+    void setPayloadCapacity(double payload) { payloadCapacity = payload; }
+    void setTowingCapacity(double towing) { towingCapacity = towing; }
+};
+
+int main() {
+  
+    Car myCar("Toyota", "Camry", 2022, 5, "Gasoline");
+    Truck myTruck("Ford", "F-150", 2022, 1500.0, 8000.0);
+
+    
+    std::cout << "Car Information:" << std::endl;
+    std::cout << "Make: " << myCar.getMake() << ", Model: " << myCar.getModel() << ", Year: " << myCar.getYear() << std::endl;
+    std::cout << "Seating Capacity: " << myCar.getSeatingCapacity() << ", Fuel Type: " << myCar.getFuelType() << std::endl;
+
+    std::cout << "\nTruck Information:" << std::endl;
+    std::cout << "Make: " << myTruck.getMake() << ", Model: " << myTruck.getModel() << ", Year: " << myTruck.getYear() << std::endl;
+    std::cout << "Payload Capacity: " << myTruck.getPayloadCapacity() << " lbs, Towing Capacity: " << myTruck.getTowingCapacity() << " lbs" << std::endl;
+
+    return 0;
+}
