@@ -1,0 +1,34 @@
+#include <iostream>
+#include <string>
+
+class Car {
+private:
+    std::string make;
+    std::string model;
+
+public:
+  
+    Car(const std::string& carMake, const std::string& carModel)
+        : make(carMake), model(carModel) {
+        std::cout << "Car object created: " << make << " " << model << std::endl;
+    }
+
+
+    ~Car() {
+        std::cout << "Car object destroyed: " << make << " " << model << std::endl;
+    }
+
+    void displayInfo() {
+        std::cout << "Car Information: " << make << " " << model << std::endl;
+    }
+};
+
+int main() {
+    
+    Car myCar("Toyota", "Camry");
+
+    myCar.displayInfo();
+
+
+    return 0;
+}
